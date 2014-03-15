@@ -44,26 +44,26 @@ qevercloud::NoteStore::NoteStore(QObject *parent): QObject(parent)
 
 }
 
-/** @fn qevercloud::UserStore:setAuthenticationToken
+/** @fn qevercloud::UserStore::setAuthenticationToken
  * Sets a value that will be used as the default token.
  * */
 
-/** @fn qevercloud::UserStore:authenticationToken
+/** @fn qevercloud::UserStore::authenticationToken
  * @returns the default authentication token value.
  * */
 
-/** @fn qevercloud::NoteStore:setAuthenticationToken
+/** @fn qevercloud::NoteStore::setAuthenticationToken
  * Sets a value that will be used as the default token.
  * */
 
-/** @fn qevercloud::NoteStore:authenticationToken
+/** @fn qevercloud::NoteStore::authenticationToken
  * @returns the default authentication token value.
  * */
 
-/** @fn qevercloud::NoteStore:setNoteStoreUrl
+/** @fn qevercloud::NoteStore::setNoteStoreUrl
  * Sets a value that will be used as EDAM NoteStore service url by this object.
  * */
 
-/** @fn qevercloud::NoteStore:authenticationToken
+/** @fn qevercloud::NoteStore::authenticationToken
  * @returns EDAM NoteStore service url that is used by this NoteStore object.
  * */
