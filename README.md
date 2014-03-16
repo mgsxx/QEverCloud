@@ -5,7 +5,7 @@ QEverCloud
 
 ## What's this
 
-This library peresents complete Evernote SDK for Qt. 
+This library presents complete Evernote SDK for Qt. 
 All the functionality that is described on [Evernote site](http://dev.evernote.com/doc/)
 is implemented and ready to use. In particular OAuth authentication is implemented.
 
