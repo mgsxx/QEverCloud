@@ -28,6 +28,7 @@ namespace {
 qevercloud::EvernoteOAuthWebView::EvernoteOAuthWebView(QWidget *parent)
     : QWebView(parent), isSucceeded_(false)
 {
+    page()->setNetworkAccessManager(evernoteNetworkAccessManager());
 }
 
 void qevercloud::EvernoteOAuthWebView::setSizeHint(QSize sizeHint)

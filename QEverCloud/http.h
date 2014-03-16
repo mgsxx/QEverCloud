@@ -13,7 +13,7 @@
 
 namespace qevercloud {
 
-QNetworkAccessManager* networkAccessManager();
+QNetworkAccessManager* evernoteNetworkAccessManager();
 
 // the class greatly simplifies QNetworkReply handling
 class ReplyFetcher: public QObject {

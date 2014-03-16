@@ -12,7 +12,7 @@
 
 namespace qevercloud {
 
-QNetworkAccessManager* networkAccessManager() {
+QNetworkAccessManager* evernoteNetworkAccessManager() {
     static QSharedPointer<QNetworkAccessManager> networkAccessManager_;
     static QMutex networkAccessManagerMutex;
     QMutexLocker mutexLocker(&networkAccessManagerMutex);
@@ -122,7 +122,7 @@ QByteArray askEvernote(QString url, QByteArray postData) {
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-thrift");
     request.setHeader(QNetworkRequest::UserAgentHeader, QString("QEverCloud %1.%2").arg(libraryVersion / 10000).arg(libraryVersion % 10000));
     request.setRawHeader("Accept", "application/x-thrift");
-    QByteArray reply = simpleDownload(networkAccessManager(), request, postData, &httpStatusCode);
+    QByteArray reply = simpleDownload(evernoteNetworkAccessManager(), request, postData, &httpStatusCode);
     if(httpStatusCode != 200) {
         throw EverCloudException(QString("HTTP Status Code = %1").arg(httpStatusCode));
     }
@@ -134,7 +134,7 @@ QByteArray Thumbnail::download(Guid guid, bool isPublic, bool isResourceGuid)
 {
     int httpStatusCode = 0;
     QPair<QNetworkRequest, QByteArray> request = createPostRequest(guid, isPublic, isResourceGuid);
-    QByteArray reply = simpleDownload(networkAccessManager(), request.first, request.second, &httpStatusCode);
+    QByteArray reply = simpleDownload(evernoteNetworkAccessManager(), request.first, request.second, &httpStatusCode);
     if(httpStatusCode != 200) {
         throw EverCloudException(QString("HTTP Status Code = %1").arg(httpStatusCode));
     }
