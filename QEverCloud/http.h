@@ -9,6 +9,8 @@
 #include <QNetworkReply>
 #include <QTimer>
 
+/** @cond HIDDEN_SYMBOLS  */
+
 namespace qevercloud {
 
 QNetworkAccessManager* networkAccessManager();
@@ -51,5 +53,7 @@ QByteArray askEvernote(QString url, QByteArray postData);
 
 
 }
+
+/** @endcond */
 
 #endif // QEVERCLOUD_HTTPL_H

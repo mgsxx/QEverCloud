@@ -248,6 +248,16 @@ public:
         return &value_;
     }
 
+    /**
+     * The function is sometimes useful to simplify checking for the value being set.
+     * @param defaultValue
+     * The value to return if Optional is not set.
+     * @return Optional value if set and defaultValue otherwise.
+     */
+    T value(T defaultValue = T()) const {
+        return isSet_ ? value_ : defaultValue;
+    }
+
     template<class X> friend class Optional;
 };
 

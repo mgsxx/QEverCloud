@@ -12,15 +12,16 @@ namespace {
     };
 
     QsrandExecutor qsrandExecutor;    
-}
 
-quint64 random64()
-{
-    quint64 res = 0;
-    for(int i = 0; i < 8; i++) {
-        res += static_cast<quint64>(qrand() % 256) << i*8;
+    quint64 random64()
+    {
+        quint64 res = 0;
+        for(int i = 0; i < 8; i++) {
+            res += static_cast<quint64>(qrand() % 256) << i*8;
+        }
+        return res;
     }
-    return res;
+
 }
 
 

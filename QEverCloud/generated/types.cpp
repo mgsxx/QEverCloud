@@ -7,6 +7,8 @@
 
 namespace qevercloud {
 
+/** @cond HIDDEN_SYMBOLS  */
+
 void writeSyncState(ThriftBinaryBufferWriter& w, const SyncState& s) {
     w.writeStructBegin("SyncState");
     w.writeFieldBegin("currentTime", ThriftFieldType::T_I64, 1);
@@ -6743,6 +6745,8 @@ void readEnumReminderEmailConfig(ThriftBinaryBufferReader& r, ReminderEmailConfi
     default: throw ThriftException(ThriftException::Type::INVALID_DATA, "Incorrect value for enum ReminderEmailConfig");
     }
 }
+
+/** @endcond */
 
 
 

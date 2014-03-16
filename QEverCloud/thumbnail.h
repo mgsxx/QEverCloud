@@ -7,8 +7,6 @@
 #include <QNetworkAccessManager>
 
 
-//
-
 namespace qevercloud {
 
 /**

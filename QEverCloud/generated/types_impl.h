@@ -15,6 +15,8 @@
 
 namespace qevercloud {
 
+/** @cond HIDDEN_SYMBOLS  */
+
 void writeSyncState(ThriftBinaryBufferWriter& w, const SyncState& s);
 void readSyncState(ThriftBinaryBufferReader& r, SyncState& s);
 void writeSyncChunk(ThriftBinaryBufferWriter& w, const SyncChunk& s);
@@ -115,6 +117,7 @@ void readEnumBusinessUserRole(ThriftBinaryBufferReader& r, BusinessUserRole::typ
 void readEnumSharedNotebookInstanceRestrictions(ThriftBinaryBufferReader& r, SharedNotebookInstanceRestrictions::type& e);
 void readEnumReminderEmailConfig(ThriftBinaryBufferReader& r, ReminderEmailConfig::type& e);
 
+/** @endcond */
 
 }
 #endif // QEVERCLOUD_GENERATED_TYPES_IMPL_H

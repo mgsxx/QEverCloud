@@ -7,3 +7,17 @@
 #include "thrift.h"
 
 #endif // QEVERCLOUD_IMPL_H
+
+/**
+
+@mainpage About QEverCloud
+
+This library presents complete Evernote SDK for Qt.
+All the functionality that is described on <a href="http://dev.evernote.com/doc/">Evernote site</a>
+is implemented and ready to use. In particular OAuth autentication is implemented.
+
+Include *QEverCloud.h* or *QEverCloudOAuth.h* to use the library. The latter header is needed if you use OAuth functionality.
+
+<a href="https://github.com/mgsxx/QEverCloud">QEverCloud on GitHub</a>
+
+*/

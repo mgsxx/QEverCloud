@@ -3,6 +3,8 @@
 #include "generated/types_impl.h"
 #include "impl.h"
 
+/** @cond HIDDEN_SYMBOLS  */
+
 namespace qevercloud {
 
 
@@ -235,3 +237,5 @@ void readEDAMNotFoundException(ThriftBinaryBufferReader& r, EDAMNotFoundExceptio
 
 
 }
+
+/** @endcond  */

@@ -8,6 +8,8 @@
 #include <QtNetwork>
 #include <QSharedPointer>
 
+/** @cond HIDDEN_SYMBOLS  */
+
 namespace qevercloud {
 
 QNetworkAccessManager* networkAccessManager() {
@@ -58,9 +60,9 @@ void ReplyFetcher::onDownloadProgress(qint64, qint64)
     lastNetworkTime_ = QDateTime::currentMSecsSinceEpoch();
 }
 
-const int connectionTimeout = 30*1000;
 void ReplyFetcher::checkForTimeout()
 {
+    const int connectionTimeout = 30*1000;
     if((lastNetworkTime_ - QDateTime::currentMSecsSinceEpoch()) > connectionTimeout) {
         setError("Connection timeout.");
     }
@@ -175,3 +177,4 @@ QPair<QNetworkRequest, QByteArray> Thumbnail::createPostRequest(Guid guid, bool 
 
 }
 
+/** @endcond */
