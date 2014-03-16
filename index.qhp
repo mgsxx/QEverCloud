@@ -19,6 +19,7 @@
           </section>
           <section title="Namespace Members" ref="namespacemembers.html">
             <section title="All" ref="namespacemembers.html" />
+            <section title="Functions" ref="namespacemembers_func.html" />
             <section title="Variables" ref="namespacemembers_vars.html" />
             <section title="Typedefs" ref="namespacemembers_type.html" />
           </section>
@@ -971,6 +972,7 @@
       <keyword name="Guid" id="qevercloud::Guid" ref="namespaceqevercloud.html#a774898552e740ee596d7a2cb4d3c06a0" />
       <keyword name="Timestamp" id="qevercloud::Timestamp" ref="namespaceqevercloud.html#a2f1eb5732e81315af51bdccba0b4d69a" />
       <keyword name="UserID" id="qevercloud::UserID" ref="namespaceqevercloud.html#a0493b5618668137b684efdb76160f282" />
+      <keyword name="evernoteNetworkAccessManager" id="qevercloud::evernoteNetworkAccessManager" ref="namespaceqevercloud.html#a8e9e52ec9b39f4b443068ab4e7254a2b" />
       <keyword name="CLASSIFICATION_RECIPE_SERVICE_RECIPE" id="qevercloud::CLASSIFICATION_RECIPE_SERVICE_RECIPE" ref="namespaceqevercloud.html#a559ed8662581b2fa7c88af611e720461" />
       <keyword name="CLASSIFICATION_RECIPE_USER_NON_RECIPE" id="qevercloud::CLASSIFICATION_RECIPE_USER_NON_RECIPE" ref="namespaceqevercloud.html#a1ecf41db240a6c9f155f71e80db5abfa" />
       <keyword name="CLASSIFICATION_RECIPE_USER_RECIPE" id="qevercloud::CLASSIFICATION_RECIPE_USER_RECIPE" ref="namespaceqevercloud.html#a765748657384c4aea288ab20cf8484ef" />
@@ -1931,6 +1933,7 @@
       <file>pages.html</file>
       <file>namespaces.html</file>
       <file>namespacemembers.html</file>
+      <file>namespacemembers_func.html</file>
       <file>namespacemembers_vars.html</file>
       <file>namespacemembers_type.html</file>
       <file>annotated.html</file>
