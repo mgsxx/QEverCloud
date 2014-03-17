@@ -8,7 +8,7 @@
 namespace {
     class QsrandExecutor {
     public:
-        QsrandExecutor() {qsrand(QDateTime::currentMSecsSinceEpoch() % static_cast<quint64>(256)*256*256*256);}
+        QsrandExecutor() {qsrand(QDateTime::currentMSecsSinceEpoch() % (static_cast<quint64>(256)*256*256*256));}
     };
 
     QsrandExecutor qsrandExecutor;    
