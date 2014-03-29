@@ -268,6 +268,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8e9e52ec9b39f4b443068ab4e7254a2b"><td class="memItemLeft" align="right" valign="top">QNetworkAccessManager *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqevercloud.html#a8e9e52ec9b39f4b443068ab4e7254a2b">evernoteNetworkAccessManager</a> ()</td></tr>
 <tr class="memdesc:a8e9e52ec9b39f4b443068ab4e7254a2b"><td class="mdescLeft">&#160;</td><td class="mdescRight">All network request made by QEverCloud - including OAuth - are served by this NetworkAccessManager.  <a href="#a8e9e52ec9b39f4b443068ab4e7254a2b">More...</a><br/></td></tr>
 <tr class="separator:a8e9e52ec9b39f4b443068ab4e7254a2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26f5858717500a8c889d9e878084c9b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqevercloud.html#a26f5858717500a8c889d9e878084c9b4">setNonceGenerator</a> (quint64(*nonceGenerator)())</td></tr>
+<tr class="memdesc:a26f5858717500a8c889d9e878084c9b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the function to use for nonce generation for OAuth authentication.  <a href="#a26f5858717500a8c889d9e878084c9b4">More...</a><br/></td></tr>
+<tr class="separator:a26f5858717500a8c889d9e878084c9b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -828,7 +831,7 @@ const qint32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memdesc:ab06ee22f5fd7c12399436a1bf9c3759b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The minor version number for the current revision of the EDAM protocol.  <a href="#ab06ee22f5fd7c12399436a1bf9c3759b">More...</a><br/></td></tr>
 <tr class="separator:ab06ee22f5fd7c12399436a1bf9c3759b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0acece15c9798c3643af51da485de74"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae0acece15c9798c3643af51da485de74"></a>
-const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqevercloud.html#ae0acece15c9798c3643af51da485de74">libraryVersion</a> = 1*10000 + 0</td></tr>
+const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceqevercloud.html#ae0acece15c9798c3643af51da485de74">libraryVersion</a> = 1*10000 + 1</td></tr>
 <tr class="memdesc:ae0acece15c9798c3643af51da485de74"><td class="mdescLeft">&#160;</td><td class="mdescRight">qevercloud library version. <br/></td></tr>
 <tr class="separator:ae0acece15c9798c3643af51da485de74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -901,7 +904,28 @@ const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 </div><div class="memdoc">
 
 <p>All network request made by QEverCloud - including OAuth - are served by this NetworkAccessManager. </p>
-<p>Use this function to handle proxy authentivation requests etc. </p>
+<p>Use this function to handle proxy authentication requests etc. </p>
+
+</div>
+</div>
+<a class="anchor" id="a26f5858717500a8c889d9e878084c9b4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void qevercloud::setNonceGenerator </td>
+          <td>(</td>
+          <td class="paramtype">quint64(*)()&#160;</td>
+          <td class="paramname"><em>nonceGenerator</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the function to use for nonce generation for OAuth authentication. </p>
+<p>The default algorithm uses qrand() so do not forget to call qsrand() in your application!</p>
+<p>qrand() is not guaranteed to be cryptographically strong. I try to amend the fact by using QUuid::createUuid() which uses /dev/urandom if it's availabe. But this is no guarantee either. So if you want total control over nonce generation you can write you own algorithm.</p>
+<p>setNonceGenerator is NOT thread safe. </p>
 
 </div>
 </div>
@@ -1455,7 +1479,7 @@ GMT+08:00 </li>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Mar 16 2014 04:47:55 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 29 2014 15:44:17 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

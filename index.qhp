@@ -178,6 +178,7 @@
                 <section title="isSucceeded" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#a59a244651a6437a8d16d819d7e82a930" />
                 <section title="oauthError" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#ab40c58603d252b77f700be0f8474ba41" />
                 <section title="oauthResult" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#ac90e6339be21ce5b7838bba7918e7f48" />
+                <section title="open" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#a147d466e5095ae49c1fc69095c8235e1" />
                 <section title="setWebViewSizeHint" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#a34d02a7cc283ac4dfe03080b31c08f5a" />
               </section>
               <section title="EvernoteOAuthWebView" ref="classqevercloud_1_1_evernote_o_auth_web_view.html">
@@ -973,6 +974,7 @@
       <keyword name="Timestamp" id="qevercloud::Timestamp" ref="namespaceqevercloud.html#a2f1eb5732e81315af51bdccba0b4d69a" />
       <keyword name="UserID" id="qevercloud::UserID" ref="namespaceqevercloud.html#a0493b5618668137b684efdb76160f282" />
       <keyword name="evernoteNetworkAccessManager" id="qevercloud::evernoteNetworkAccessManager" ref="namespaceqevercloud.html#a8e9e52ec9b39f4b443068ab4e7254a2b" />
+      <keyword name="setNonceGenerator" id="qevercloud::setNonceGenerator" ref="namespaceqevercloud.html#a26f5858717500a8c889d9e878084c9b4" />
       <keyword name="CLASSIFICATION_RECIPE_SERVICE_RECIPE" id="qevercloud::CLASSIFICATION_RECIPE_SERVICE_RECIPE" ref="namespaceqevercloud.html#a559ed8662581b2fa7c88af611e720461" />
       <keyword name="CLASSIFICATION_RECIPE_USER_NON_RECIPE" id="qevercloud::CLASSIFICATION_RECIPE_USER_NON_RECIPE" ref="namespaceqevercloud.html#a1ecf41db240a6c9f155f71e80db5abfa" />
       <keyword name="CLASSIFICATION_RECIPE_USER_RECIPE" id="qevercloud::CLASSIFICATION_RECIPE_USER_RECIPE" ref="namespaceqevercloud.html#a765748657384c4aea288ab20cf8484ef" />
@@ -1251,6 +1253,7 @@
       <keyword name="isSucceeded" id="qevercloud::EvernoteOAuthDialog::isSucceeded" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#a59a244651a6437a8d16d819d7e82a930" />
       <keyword name="oauthError" id="qevercloud::EvernoteOAuthDialog::oauthError" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#ab40c58603d252b77f700be0f8474ba41" />
       <keyword name="oauthResult" id="qevercloud::EvernoteOAuthDialog::oauthResult" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#ac90e6339be21ce5b7838bba7918e7f48" />
+      <keyword name="open" id="qevercloud::EvernoteOAuthDialog::open" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#a147d466e5095ae49c1fc69095c8235e1" />
       <keyword name="setWebViewSizeHint" id="qevercloud::EvernoteOAuthDialog::setWebViewSizeHint" ref="classqevercloud_1_1_evernote_o_auth_dialog.html#a34d02a7cc283ac4dfe03080b31c08f5a" />
       <keyword name="qevercloud::EvernoteOAuthWebView" id="qevercloud::EvernoteOAuthWebView" ref="classqevercloud_1_1_evernote_o_auth_web_view.html" />
       <keyword name="authenticationFailed" id="qevercloud::EvernoteOAuthWebView::authenticationFailed" ref="classqevercloud_1_1_evernote_o_auth_web_view.html#a8dfeb70bcd6812312893020657ae2669" />
