@@ -4,14 +4,10 @@
 #include <QNetworkReply>
 #include <QWebSettings>
 #include <QWebHistory>
+#include <QUuid>
+#include <cstring>
 
 namespace {
-    class QsrandExecutor {
-    public:
-        QsrandExecutor() {qsrand(QDateTime::currentMSecsSinceEpoch() % (static_cast<quint64>(256)*256*256*256));}
-    };
-
-    QsrandExecutor qsrandExecutor;    
 
     quint64 random64()
     {
@@ -19,9 +15,26 @@ namespace {
         for(int i = 0; i < 8; i++) {
             res += static_cast<quint64>(qrand() % 256) << i*8;
         }
+
+        QByteArray randomData = QUuid::createUuid().toRfc4122();
+        quint64 random;
+        std::memcpy(&random, &randomData.constData()[0], sizeof(random));
+        res ^= random;
+        std::memcpy(&random, &randomData.constData()[sizeof(random)], sizeof(random));
+        res ^= random;
+
         return res;
     }
 
+    typedef quint64 (*NonceGenerator)();
+    NonceGenerator nonceGenerator_ = random64;
+
+    NonceGenerator nonceGenerator() {return nonceGenerator_;}
+}
+
+void setNonceGenerator(quint64 (*nonceGenerator)())
+{
+    nonceGenerator_ = nonceGenerator;
 }
 
 
@@ -46,7 +59,7 @@ void qevercloud::EvernoteOAuthWebView::authenticate(QString host, QString consum
     this->history()->clear();
 
     qint64 timestamp = QDateTime::currentMSecsSinceEpoch()/1000;
-    qint64 nonce = random64();
+    qint64 nonce = nonceGenerator()();
     oauthUrlBase_ = QString("https://%1/oauth?oauth_consumer_key=%2&oauth_signature=%3&oauth_signature_method=PLAINTEXT&oauth_timestamp=%4&oauth_nonce=%5")
             .arg(host).arg(consumerKey).arg(consumerSecret).arg(timestamp).arg(nonce);
 
@@ -167,5 +180,11 @@ int qevercloud::EvernoteOAuthDialog::exec()
 {
     webView_->authenticate(host_, consumerKey_, consumerSecret_);
     return QDialog::exec();
+}
+
+void qevercloud::EvernoteOAuthDialog::open()
+{
+    QDialog::open();
+    webView_->authenticate(host_, consumerKey_, consumerSecret_);
 }
 

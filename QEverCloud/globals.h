@@ -14,14 +14,14 @@ namespace qevercloud {
  * All network request made by QEverCloud - including OAuth - are
  * served by this NetworkAccessManager.
  *
- * Use this function to handle proxy authentivation requests etc.
+ * Use this function to handle proxy authentication requests etc.
  */
 QNetworkAccessManager* evernoteNetworkAccessManager();
 
 /**
  * qevercloud library version.
  */
-const int libraryVersion = 1*10000 + 0;
+const int libraryVersion = 1*10000 + 1;
 
 
 /**

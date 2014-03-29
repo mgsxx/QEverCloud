@@ -29,6 +29,10 @@ bool NotePosterApplication::notify(QObject *o, QEvent *e)
 int main(int argc, char *argv[])
 try
 {
+    // qrand is used for nonce generation by default
+    // so qsrand must be called in the default case
+    qsrand(QDateTime::currentMSecsSinceEpoch() % static_cast<quint64>(256)*256*256*256);
+
     QApplication a(argc, argv);
 
     SettingsDialog d;

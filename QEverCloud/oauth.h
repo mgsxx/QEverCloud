@@ -23,11 +23,27 @@ QT += widgets webkitwidgets
 namespace qevercloud {
 
 /**
+ * @brief Sets the function to use for nonce generation for OAuth authentication.
+ *
+ * The default algorithm uses qrand() so do not forget to call qsrand() in your application!
+ *
+ * qrand() is not guaranteed to be cryptographically strong. I try to amend the fact by using
+ *  QUuid::createUuid() which uses /dev/urandom if it's availabe. But this is no guarantee either.
+ * So if you want total control over nonce generation you can write you own algorithm.
+ *
+ * setNonceGenerator is NOT thread safe.
+ */
+void setNonceGenerator(quint64 (*nonceGenerator)());
+
+/**
  * @brief The class is tailored specifically for OAuth authorization with Evernote.
  *
  * While it is functional by itself you probably will prefer to use EvernoteOAuthDialog.
  *
  * %Note that you have to include @link oauth_include QEverCloudOAuth.h header@endlink.
+ *
+ * By deafult EvernoteOAuthWebView uses qrand() for generating nonce so do not forget to call qsrand()
+ * in your application. See @link setNonceGenerator @endlink If you want more control over nonce generation.
  */
 class EvernoteOAuthWebView: public QWebView {
     Q_OBJECT
@@ -125,6 +141,9 @@ if(d.exec() == QDialog::Accepted) {
 @endcode
  *
  * %Note that you have to include @link oauth_include QEverCloudOAuth.h header@endlink.
+ *
+ * By deafult EvernoteOAuthDialog uses qrand() for generating nonce so do not forget to call qsrand()
+ * in your application. See @link setNonceGenerator @endlink If you want more control over nonce generation.
  */
 
 class EvernoteOAuthDialog: public QDialog {
@@ -173,8 +192,12 @@ public:
     /**
      * @return
      *   QDialog::Accepted on a succesful authentication.
-    */
+     */
     int exec();
+
+    /** Shows the dialog as a window modal dialog, returning immediately.
+     */
+    void open();
 
 private:
    EvernoteOAuthWebView* webView_;
