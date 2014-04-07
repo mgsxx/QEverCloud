@@ -4,7 +4,6 @@ CONFIG += staticlib
 
 QT += network widgets webkitwidgets
 
-CONFIG -= c++11
 CONFIG += silent
 CONFIG -= debug_and_release debug_and_release_target
 
