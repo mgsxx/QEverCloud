@@ -12,7 +12,7 @@ is implemented and ready to use. In particular OAuth authentication is implement
 Read doxygen generated [documentation](http://mgsxx.github.io/QEverCloud) for detailed info.
 
 The documentstion is also available as a .qch file which you can register with
-your copy of Qt Creator to have context-senditive help. See *qch* subdir.
+your copy of Qt Creator to have context-sensitive help. See *qch* subdir.
 
 
 ## Compatibility
