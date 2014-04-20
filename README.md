@@ -25,6 +25,9 @@ I do not check this personally but I have heard about successful compilation und
 
 To be pricise I've tested the library under Qt 5 on Windows with MSVC2010, MSVC2012 and MinGW 4.8.
 
+### About qt4 branch 
+QEverCloud with versions greater 1.2 will require Qt 5. If you're stuck with Qt 4 then use 1.2 version.
+It's saved in `qt4` branch.
 
 ## How to compile
 
