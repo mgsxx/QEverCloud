@@ -69,7 +69,7 @@ public:
        *   structure for an explanation of the fields that clients can pass to
        *   the service.
        */
-    SyncState getSyncStateWithMetrics(ClientUsageMetrics clientMetrics, QString authenticationToken = QString());
+    SyncState getSyncStateWithMetrics(const ClientUsageMetrics& clientMetrics, QString authenticationToken = QString());
 
     /**
        * DEPRECATED - use getFilteredSyncChunk.
@@ -109,7 +109,7 @@ public:
        *   </li>
        * </ul>
        */
-    SyncChunk getFilteredSyncChunk(qint32 afterUSN, qint32 maxEntries, SyncChunkFilter filter, QString authenticationToken = QString());
+    SyncChunk getFilteredSyncChunk(qint32 afterUSN, qint32 maxEntries, const SyncChunkFilter& filter, QString authenticationToken = QString());
 
     /**
        * Asks the NoteStore to provide information about the status of a linked
@@ -132,7 +132,7 @@ public:
        *   This structure should contain identifying information and permissions
        *   to access the notebook in question.
        */
-    SyncState getLinkedNotebookSyncState(LinkedNotebook linkedNotebook, QString authenticationToken = QString());
+    SyncState getLinkedNotebookSyncState(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
 
     /**
        * Asks the NoteStore to provide information about the contents of a linked
@@ -198,7 +198,7 @@ public:
        *   </li>
        * </ul>
        */
-    SyncChunk getLinkedNotebookSyncChunk(LinkedNotebook linkedNotebook, qint32 afterUSN, qint32 maxEntries, bool fullSyncOnly, QString authenticationToken = QString());
+    SyncChunk getLinkedNotebookSyncChunk(const LinkedNotebook& linkedNotebook, qint32 afterUSN, qint32 maxEntries, bool fullSyncOnly, QString authenticationToken = QString());
 
     /**
        * Returns a list of all of the notebooks in the account.
@@ -265,7 +265,7 @@ public:
        *   </li>
        * </ul>
        */
-    Notebook createNotebook(Notebook notebook, QString authenticationToken = QString());
+    Notebook createNotebook(const Notebook& notebook, QString authenticationToken = QString());
 
     /**
        * Submits notebook changes to the service.  The provided data must include
@@ -299,7 +299,7 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateNotebook(Notebook notebook, QString authenticationToken = QString());
+    qint32 updateNotebook(const Notebook& notebook, QString authenticationToken = QString());
 
     /**
        * Permanently removes the notebook from the user's account.
@@ -397,7 +397,7 @@ public:
        *   </li>
        * </ul>
        */
-    Tag createTag(Tag tag, QString authenticationToken = QString());
+    Tag createTag(const Tag& tag, QString authenticationToken = QString());
 
     /**
        * Submits tag changes to the service.  The provided data must include
@@ -430,7 +430,7 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateTag(Tag tag, QString authenticationToken = QString());
+    qint32 updateTag(const Tag& tag, QString authenticationToken = QString());
 
     /**
        * Removes the provided tag from every note that is currently tagged with
@@ -536,7 +536,7 @@ public:
        *   </li>
        * </ul>
        */
-    SavedSearch createSearch(SavedSearch search, QString authenticationToken = QString());
+    SavedSearch createSearch(const SavedSearch& search, QString authenticationToken = QString());
 
     /**
        * Submits search changes to the service. The provided data must include
@@ -565,7 +565,7 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateSearch(SavedSearch search, QString authenticationToken = QString());
+    qint32 updateSearch(const SavedSearch& search, QString authenticationToken = QString());
 
     /**
        * Permanently deletes the saved search with the provided GUID, if present.
@@ -597,7 +597,7 @@ public:
     /**
        * DEPRECATED. Use findNotesMetadata.
        */
-    NoteList findNotes(NoteFilter filter, qint32 offset, qint32 maxNotes, QString authenticationToken = QString());
+    NoteList findNotes(const NoteFilter& filter, qint32 offset, qint32 maxNotes, QString authenticationToken = QString());
 
     /**
        * Finds the position of a note within a sorted subset of all of the user's
@@ -640,7 +640,7 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 findNoteOffset(NoteFilter filter, Guid guid, QString authenticationToken = QString());
+    qint32 findNoteOffset(const NoteFilter& filter, Guid guid, QString authenticationToken = QString());
 
     /**
        * Used to find the high-level information about a set of the notes from a
@@ -696,7 +696,7 @@ public:
        *   </li>
        * </ul>
        */
-    NotesMetadataList findNotesMetadata(NoteFilter filter, qint32 offset, qint32 maxNotes, NotesMetadataResultSpec resultSpec, QString authenticationToken = QString());
+    NotesMetadataList findNotesMetadata(const NoteFilter& filter, qint32 offset, qint32 maxNotes, const NotesMetadataResultSpec& resultSpec, QString authenticationToken = QString());
 
     /**
        * This function is used to determine how many notes are found for each
@@ -733,7 +733,7 @@ public:
        *   </li>
        * </ul>
        */
-    NoteCollectionCounts findNoteCounts(NoteFilter filter, bool withTrash, QString authenticationToken = QString());
+    NoteCollectionCounts findNoteCounts(const NoteFilter& filter, bool withTrash, QString authenticationToken = QString());
 
     /**
        * Returns the current state of the note in the service with the provided
@@ -976,7 +976,7 @@ public:
        *   </li>
        * </ul>
        */
-    Note createNote(Note note, QString authenticationToken = QString());
+    Note createNote(const Note& note, QString authenticationToken = QString());
 
     /**
        * Submit a set of changes to a note to the service.  The provided data
@@ -1043,7 +1043,7 @@ public:
        *   </li>
        * </ul>
        */
-    Note updateNote(Note note, QString authenticationToken = QString());
+    Note updateNote(const Note& note, QString authenticationToken = QString());
 
     /**
        * Moves the note into the trash. The note may still be undeleted, unless it
@@ -1382,7 +1382,7 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateResource(Resource resource, QString authenticationToken = QString());
+    qint32 updateResource(const Resource& resource, QString authenticationToken = QString());
 
     /**
        * Returns binary data of the resource with the provided GUID.  For
@@ -1593,7 +1593,7 @@ public:
        *   </li>
        *   </ul>
        */
-    SharedNotebook createSharedNotebook(SharedNotebook sharedNotebook, QString authenticationToken = QString());
+    SharedNotebook createSharedNotebook(const SharedNotebook& sharedNotebook, QString authenticationToken = QString());
 
     /**
        * Update a SharedNotebook object.
@@ -1624,7 +1624,7 @@ public:
        *   <li>SharedNotebook.id - if no shared notebook with the specified ID was found.
        *   </ul>
        */
-    qint32 updateSharedNotebook(SharedNotebook sharedNotebook, QString authenticationToken = QString());
+    qint32 updateSharedNotebook(const SharedNotebook& sharedNotebook, QString authenticationToken = QString());
 
     /**
        * Set values for the recipient settings associated with a shared notebook.  Having
@@ -1655,7 +1655,7 @@ public:
        *       recipientSettings parameter.
        * </ul>
        */
-    qint32 setSharedNotebookRecipientSettings(qint64 sharedNotebookId, SharedNotebookRecipientSettings recipientSettings, QString authenticationToken = QString());
+    qint32 setSharedNotebookRecipientSettings(qint64 sharedNotebookId, const SharedNotebookRecipientSettings& recipientSettings, QString authenticationToken = QString());
 
     /**
        * Send a reminder message to some or all of the email addresses that a notebook has been
@@ -1747,7 +1747,7 @@ public:
        *   </li>
        * </ul>
        */
-    LinkedNotebook createLinkedNotebook(LinkedNotebook linkedNotebook, QString authenticationToken = QString());
+    LinkedNotebook createLinkedNotebook(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
 
     /**
        * @param linkedNotebook
@@ -1761,7 +1761,7 @@ public:
        *   </li>
        * </ul>
        */
-    qint32 updateLinkedNotebook(LinkedNotebook linkedNotebook, QString authenticationToken = QString());
+    qint32 updateLinkedNotebook(const LinkedNotebook& linkedNotebook, QString authenticationToken = QString());
 
     /**
        * Returns a list of linked notebooks
@@ -1900,7 +1900,7 @@ public:
        *   </li>
        * </ul>
        */
-    void emailNote(NoteEmailParameters parameters, QString authenticationToken = QString());
+    void emailNote(const NoteEmailParameters& parameters, QString authenticationToken = QString());
 
     /**
        * If this note is not already shared (via its own direct URL), then this
@@ -2042,7 +2042,7 @@ public:
        *   </li>
        * </ul>
        */
-    RelatedResult findRelated(RelatedQuery query, RelatedResultSpec resultSpec, QString authenticationToken = QString());
+    RelatedResult findRelated(const RelatedQuery& query, const RelatedResultSpec& resultSpec, QString authenticationToken = QString());
 
 private:
     QString url_;

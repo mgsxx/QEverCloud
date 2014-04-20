@@ -8,6 +8,9 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 #include <QTimer>
+#include <QSharedPointer>
+#include <QTypeInfo>
+#include <QSslError>
 
 /** @cond HIDDEN_SYMBOLS  */
 

@@ -4,7 +4,7 @@
 #include <QByteArray>
 #include <QtEndian>
 #include <cstring>
-
+#include <limits>
 
 namespace qevercloud {
 

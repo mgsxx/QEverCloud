@@ -120,7 +120,8 @@ QByteArray askEvernote(QString url, QByteArray postData) {
     QNetworkRequest request;
     request.setUrl(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/x-thrift");
-    request.setHeader(QNetworkRequest::UserAgentHeader, QString("QEverCloud %1.%2").arg(libraryVersion / 10000).arg(libraryVersion % 10000));
+    // request.setHeader(QNetworkRequest::UserAgentHeader, QString("QEverCloud %1.%2").arg(libraryVersion / 10000).arg(libraryVersion % 10000));
+    request.setRawHeader("User-Agent", QString("QEverCloud %1.%2").arg(libraryVersion / 10000).arg(libraryVersion % 10000).toLatin1());
     request.setRawHeader("Accept", "application/x-thrift");
     QByteArray reply = simpleDownload(evernoteNetworkAccessManager(), request, postData, &httpStatusCode);
     if(httpStatusCode != 200) {

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2
+  * Fixed reported issues when compiling under Qt 4, should be now problems now
+  * This is the last version then will try to be compatible with Qt 4
+  * Some optimizations
+
 ## 1.1
 
   * EvernoteOAuthDialog::open() now works as expected

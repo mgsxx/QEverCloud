@@ -63,23 +63,7 @@ public:
     return type_;
   }
 
-  virtual const char* what() const throw() {
-    if (err_.empty()) {
-      switch (type_) {
-        case Type::UNKNOWN              : return "ThriftException: Unknown application exception";
-        case Type::UNKNOWN_METHOD       : return "ThriftException: Unknown method";
-        case Type::INVALID_MESSAGE_TYPE : return "ThriftException: Invalid message type";
-        case Type::WRONG_METHOD_NAME    : return "ThriftException: Wrong method name";
-        case Type::BAD_SEQUENCE_ID      : return "ThriftException: Bad sequence identifier";
-        case Type::MISSING_RESULT       : return "ThriftException: Missing result";
-        case Type::INVALID_DATA         : return "ThriftException: Invalid data";
-        default                   : return "ThriftException: (Invalid exception type)";
-      };
-    } else {
-      return err_.c_str();
-    }
-  }
-
+  const char* what() const throw();
   // internal
   void read(void* reader);
 

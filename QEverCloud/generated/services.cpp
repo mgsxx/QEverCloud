@@ -90,7 +90,7 @@ SyncState NoteStore::getSyncState(QString authenticationToken)
     return result;
 }
 
-SyncState NoteStore::getSyncStateWithMetrics(ClientUsageMetrics clientMetrics, QString authenticationToken)
+SyncState NoteStore::getSyncStateWithMetrics(const ClientUsageMetrics& clientMetrics, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -270,7 +270,7 @@ SyncChunk NoteStore::getSyncChunk(qint32 afterUSN, qint32 maxEntries, bool fullS
     return result;
 }
 
-SyncChunk NoteStore::getFilteredSyncChunk(qint32 afterUSN, qint32 maxEntries, SyncChunkFilter filter, QString authenticationToken)
+SyncChunk NoteStore::getFilteredSyncChunk(qint32 afterUSN, qint32 maxEntries, const SyncChunkFilter& filter, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -363,7 +363,7 @@ SyncChunk NoteStore::getFilteredSyncChunk(qint32 afterUSN, qint32 maxEntries, Sy
     return result;
 }
 
-SyncState NoteStore::getLinkedNotebookSyncState(LinkedNotebook linkedNotebook, QString authenticationToken)
+SyncState NoteStore::getLinkedNotebookSyncState(const LinkedNotebook& linkedNotebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -459,7 +459,7 @@ SyncState NoteStore::getLinkedNotebookSyncState(LinkedNotebook linkedNotebook, Q
     return result;
 }
 
-SyncChunk NoteStore::getLinkedNotebookSyncChunk(LinkedNotebook linkedNotebook, qint32 afterUSN, qint32 maxEntries, bool fullSyncOnly, QString authenticationToken)
+SyncChunk NoteStore::getLinkedNotebookSyncChunk(const LinkedNotebook& linkedNotebook, qint32 afterUSN, qint32 maxEntries, bool fullSyncOnly, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -838,7 +838,7 @@ Notebook NoteStore::getDefaultNotebook(QString authenticationToken)
     return result;
 }
 
-Notebook NoteStore::createNotebook(Notebook notebook, QString authenticationToken)
+Notebook NoteStore::createNotebook(const Notebook& notebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -925,7 +925,7 @@ Notebook NoteStore::createNotebook(Notebook notebook, QString authenticationToke
     return result;
 }
 
-qint32 NoteStore::updateNotebook(Notebook notebook, QString authenticationToken)
+qint32 NoteStore::updateNotebook(const Notebook& notebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -1413,7 +1413,7 @@ Tag NoteStore::getTag(Guid guid, QString authenticationToken)
     return result;
 }
 
-Tag NoteStore::createTag(Tag tag, QString authenticationToken)
+Tag NoteStore::createTag(const Tag& tag, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -1509,7 +1509,7 @@ Tag NoteStore::createTag(Tag tag, QString authenticationToken)
     return result;
 }
 
-qint32 NoteStore::updateTag(Tag tag, QString authenticationToken)
+qint32 NoteStore::updateTag(const Tag& tag, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -1973,7 +1973,7 @@ SavedSearch NoteStore::getSearch(Guid guid, QString authenticationToken)
     return result;
 }
 
-SavedSearch NoteStore::createSearch(SavedSearch search, QString authenticationToken)
+SavedSearch NoteStore::createSearch(const SavedSearch& search, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -2060,7 +2060,7 @@ SavedSearch NoteStore::createSearch(SavedSearch search, QString authenticationTo
     return result;
 }
 
-qint32 NoteStore::updateSearch(SavedSearch search, QString authenticationToken)
+qint32 NoteStore::updateSearch(const SavedSearch& search, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -2252,7 +2252,7 @@ qint32 NoteStore::expungeSearch(Guid guid, QString authenticationToken)
     return result;
 }
 
-NoteList NoteStore::findNotes(NoteFilter filter, qint32 offset, qint32 maxNotes, QString authenticationToken)
+NoteList NoteStore::findNotes(const NoteFilter& filter, qint32 offset, qint32 maxNotes, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -2354,7 +2354,7 @@ NoteList NoteStore::findNotes(NoteFilter filter, qint32 offset, qint32 maxNotes,
     return result;
 }
 
-qint32 NoteStore::findNoteOffset(NoteFilter filter, Guid guid, QString authenticationToken)
+qint32 NoteStore::findNoteOffset(const NoteFilter& filter, Guid guid, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -2453,7 +2453,7 @@ qint32 NoteStore::findNoteOffset(NoteFilter filter, Guid guid, QString authentic
     return result;
 }
 
-NotesMetadataList NoteStore::findNotesMetadata(NoteFilter filter, qint32 offset, qint32 maxNotes, NotesMetadataResultSpec resultSpec, QString authenticationToken)
+NotesMetadataList NoteStore::findNotesMetadata(const NoteFilter& filter, qint32 offset, qint32 maxNotes, const NotesMetadataResultSpec& resultSpec, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -2558,7 +2558,7 @@ NotesMetadataList NoteStore::findNotesMetadata(NoteFilter filter, qint32 offset,
     return result;
 }
 
-NoteCollectionCounts NoteStore::findNoteCounts(NoteFilter filter, bool withTrash, QString authenticationToken)
+NoteCollectionCounts NoteStore::findNoteCounts(const NoteFilter& filter, bool withTrash, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -3561,7 +3561,7 @@ QStringList NoteStore::getNoteTagNames(Guid guid, QString authenticationToken)
     return result;
 }
 
-Note NoteStore::createNote(Note note, QString authenticationToken)
+Note NoteStore::createNote(const Note& note, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -3657,7 +3657,7 @@ Note NoteStore::createNote(Note note, QString authenticationToken)
     return result;
 }
 
-Note NoteStore::updateNote(Note note, QString authenticationToken)
+Note NoteStore::updateNote(const Note& note, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -4946,7 +4946,7 @@ qint32 NoteStore::unsetResourceApplicationDataEntry(Guid guid, QString key, QStr
     return result;
 }
 
-qint32 NoteStore::updateResource(Resource resource, QString authenticationToken)
+qint32 NoteStore::updateResource(const Resource& resource, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -5619,7 +5619,7 @@ Notebook NoteStore::getPublicNotebook(UserID userId, QString publicUri)
     return result;
 }
 
-SharedNotebook NoteStore::createSharedNotebook(SharedNotebook sharedNotebook, QString authenticationToken)
+SharedNotebook NoteStore::createSharedNotebook(const SharedNotebook& sharedNotebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -5715,7 +5715,7 @@ SharedNotebook NoteStore::createSharedNotebook(SharedNotebook sharedNotebook, QS
     return result;
 }
 
-qint32 NoteStore::updateSharedNotebook(SharedNotebook sharedNotebook, QString authenticationToken)
+qint32 NoteStore::updateSharedNotebook(const SharedNotebook& sharedNotebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -5811,7 +5811,7 @@ qint32 NoteStore::updateSharedNotebook(SharedNotebook sharedNotebook, QString au
     return result;
 }
 
-qint32 NoteStore::setSharedNotebookRecipientSettings(qint64 sharedNotebookId, SharedNotebookRecipientSettings recipientSettings, QString authenticationToken)
+qint32 NoteStore::setSharedNotebookRecipientSettings(qint64 sharedNotebookId, const SharedNotebookRecipientSettings& recipientSettings, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -6219,7 +6219,7 @@ qint32 NoteStore::expungeSharedNotebooks(QList< qint64 > sharedNotebookIds, QStr
     return result;
 }
 
-LinkedNotebook NoteStore::createLinkedNotebook(LinkedNotebook linkedNotebook, QString authenticationToken)
+LinkedNotebook NoteStore::createLinkedNotebook(const LinkedNotebook& linkedNotebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -6315,7 +6315,7 @@ LinkedNotebook NoteStore::createLinkedNotebook(LinkedNotebook linkedNotebook, QS
     return result;
 }
 
-qint32 NoteStore::updateLinkedNotebook(LinkedNotebook linkedNotebook, QString authenticationToken)
+qint32 NoteStore::updateLinkedNotebook(const LinkedNotebook& linkedNotebook, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -6799,7 +6799,7 @@ SharedNotebook NoteStore::getSharedNotebookByAuth(QString authenticationToken)
     return result;
 }
 
-void NoteStore::emailNote(NoteEmailParameters parameters, QString authenticationToken)
+void NoteStore::emailNote(const NoteEmailParameters& parameters, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
@@ -7158,7 +7158,7 @@ AuthenticationResult NoteStore::authenticateToSharedNote(QString guid, QString n
     return result;
 }
 
-RelatedResult NoteStore::findRelated(RelatedQuery query, RelatedResultSpec resultSpec, QString authenticationToken)
+RelatedResult NoteStore::findRelated(const RelatedQuery& query, const RelatedResultSpec& resultSpec, QString authenticationToken)
 {
     if(authenticationToken.isEmpty()) authenticationToken = this->authenticationToken_;
 
