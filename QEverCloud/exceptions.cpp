@@ -1,3 +1,4 @@
+
 #include "generated/types.h"
 #include "generated/types_impl.h"
 #include "impl.h"
@@ -52,7 +53,7 @@ const char *EDAMSystemException::what() const throw()
             err_ += " " + message->toStdString();
         }
         if(rateLimitDuration.isSet()) {
-            err_ += QString(" rateLimitDuration= %1 sec.").arg(rateLimitDuration).toStdString();
+            err_ += QStringLiteral(" rateLimitDuration= %1 sec.").arg(rateLimitDuration).toStdString();
         }
     }
     return EvernoteException::what();
@@ -72,13 +73,14 @@ const char * EDAMNotFoundException::what() const throw()
     return EvernoteException::what();
 }
 
-void ThriftException::read(void *reader)
+ThriftException readThriftException(ThriftBinaryBufferReader& r)
 {
-    ThriftBinaryBufferReader& r = *reinterpret_cast<ThriftBinaryBufferReader*>(reader);
     QString name;
     ThriftFieldType::type fieldType;
     qint16 fieldId;
     r.readStructBegin(name);
+    QString err;
+    ThriftException::Type::type type = ThriftException::Type::UNKNOWN;
     while(true) {
         r.readFieldBegin(name, fieldType, fieldId);
         if(fieldType == ThriftFieldType::T_STOP) break;
@@ -87,7 +89,7 @@ void ThriftException::read(void *reader)
             if(fieldType == ThriftFieldType::T_STRING) {
                 QString str;
                 r.readString(str);
-                err_ = str.toStdString();
+                err = str;
             } else {
                 r.skip(fieldType);
             }
@@ -96,7 +98,7 @@ void ThriftException::read(void *reader)
             if(fieldType == ThriftFieldType::T_I32) {
                 qint32 t;
                 r.readI32(t);
-                type_ = static_cast<Type::type>(t);
+                type = static_cast<ThriftException::Type::type>(t);
             } else {
                 r.skip(fieldType);
             }
@@ -107,6 +109,7 @@ void ThriftException::read(void *reader)
         r.readFieldEnd();
     }
     r.readStructEnd();
+    return ThriftException(type, err);
 }
 
 void readEDAMUserException(ThriftBinaryBufferReader& r, EDAMUserException& e)
@@ -145,7 +148,7 @@ void readEDAMUserException(ThriftBinaryBufferReader& r, EDAMUserException& e)
         r.readFieldEnd();
     }
     r.readStructEnd();
-    if(!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, "EDAMUserException.errorCode has no value");
+    if(!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMUserException.errorCode has no value"));
 }
 
 void readEDAMSystemException(ThriftBinaryBufferReader& r, EDAMSystemException& e)
@@ -194,7 +197,7 @@ void readEDAMSystemException(ThriftBinaryBufferReader& r, EDAMSystemException& e
         r.readFieldEnd();
     }
     r.readStructEnd();
-    if(!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, "EDAMSystemException.errorCode has no value");
+    if(!errorCode_isset) throw ThriftException(ThriftException::Type::INVALID_DATA, QStringLiteral("EDAMSystemException.errorCode has no value"));
 }
 
 void readEDAMNotFoundException(ThriftBinaryBufferReader& r, EDAMNotFoundException& e)
@@ -233,6 +236,49 @@ void readEDAMNotFoundException(ThriftBinaryBufferReader& r, EDAMNotFoundExceptio
     r.readStructEnd();
 }
 
+
+QSharedPointer<EverCloudExceptionData> EDAMUserException::exceptionData() const
+{
+    return QSharedPointer<EverCloudExceptionData>(new EDAMUserExceptionData(what(), errorCode, parameter));
+}
+
+void EDAMUserExceptionData::throwException() const
+{
+    EDAMUserException e;
+    e.errorCode = errorCode;
+    e.parameter = parameter;
+    throw e;
+}
+
+
+QSharedPointer<EverCloudExceptionData> EDAMSystemException::exceptionData() const
+{
+    return QSharedPointer<EverCloudExceptionData>(new EDAMSystemExceptionData(what(), errorCode, message, rateLimitDuration));
+}
+
+void EDAMSystemExceptionData::throwException() const
+{
+    EDAMSystemException e;
+    e.errorCode = errorCode;
+    e.message = message;
+    e.rateLimitDuration = rateLimitDuration;
+    throw e;
+}
+
+
+QSharedPointer<EverCloudExceptionData> EDAMNotFoundException::exceptionData() const
+{
+    return QSharedPointer<EverCloudExceptionData>(new EDAMNotFoundExceptionData(what(), identifier, key));
+}
+
+void EDAMNotFoundExceptionData::throwException() const
+{
+    EDAMNotFoundException e;
+    e.identifier = identifier;
+    e.key = key;
+    throw e;
+}
+
 const char *ThriftException::what() const throw()
 {
     if (err_.empty()) {
@@ -250,6 +296,9 @@ const char *ThriftException::what() const throw()
       return err_.c_str();
     }
 }
+
+
+
 
 
 }

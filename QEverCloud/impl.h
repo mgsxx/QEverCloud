@@ -6,7 +6,6 @@
 #include "http.h"
 #include "thrift.h"
 
-#endif // QEVERCLOUD_IMPL_H
 
 /**
 
@@ -21,3 +20,11 @@ Include *QEverCloud.h* or *QEverCloudOAuth.h* to use the library. The latter hea
 <a href="https://github.com/mgsxx/QEverCloud">QEverCloud on GitHub</a>
 
 */
+
+namespace qevercloud {
+
+ThriftException readThriftException(ThriftBinaryBufferReader& r);
+
+}
+
+#endif // QEVERCLOUD_IMPL_H

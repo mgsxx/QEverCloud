@@ -60,13 +60,13 @@ void qevercloud::EvernoteOAuthWebView::authenticate(QString host, QString consum
 
     qint64 timestamp = QDateTime::currentMSecsSinceEpoch()/1000;
     qint64 nonce = nonceGenerator()();
-    oauthUrlBase_ = QString("https://%1/oauth?oauth_consumer_key=%2&oauth_signature=%3&oauth_signature_method=PLAINTEXT&oauth_timestamp=%4&oauth_nonce=%5")
+    oauthUrlBase_ = QStringLiteral("https://%1/oauth?oauth_consumer_key=%2&oauth_signature=%3&oauth_signature_method=PLAINTEXT&oauth_timestamp=%4&oauth_nonce=%5")
             .arg(host).arg(consumerKey).arg(consumerSecret).arg(timestamp).arg(nonce);
 
     // step 1: acquire temporary token
     ReplyFetcher* replyFetcher = new ReplyFetcher();
-    connect(replyFetcher, SIGNAL(replyFetched(QObject*)), this, SLOT(temporaryFinished(QObject*)));
-    QUrl url(oauthUrlBase_ + "&oauth_callback=nnoauth");
+    connect(replyFetcher, &ReplyFetcher::replyFetched, this, &EvernoteOAuthWebView::temporaryFinished);
+    QUrl url(oauthUrlBase_ + QStringLiteral("&oauth_callback=nnoauth"));
     replyFetcher->start(page()->networkAccessManager(), url);
 }
 
@@ -77,12 +77,12 @@ void qevercloud::EvernoteOAuthWebView::temporaryFinished(QObject *rf)
         setError(replyFetcher->errorText());
     } else {
         QString reply = QString(replyFetcher->receivedData());
-        int index = reply.indexOf("&oauth_token_secret");
+        int index = reply.indexOf(QStringLiteral("&oauth_token_secret"));
         QString token = reply.left(index);
 
         // step 2: directing a user to the login page
         connect(this, SIGNAL(urlChanged(QUrl)), this, SLOT(onUrlChanged(QUrl)));
-        QUrl loginUrl(QString("https://%1//OAuth.action?%2").arg(host_).arg(token));
+        QUrl loginUrl(QStringLiteral("https://%1//OAuth.action?%2").arg(host_).arg(token));
         this->setUrl(loginUrl);
     }
     replyFetcher->deleteLater();
@@ -92,17 +92,18 @@ void qevercloud::EvernoteOAuthWebView::onUrlChanged(const QUrl &url)
 {
     // step 3: catch the rediret to our callback url (nnoauth)
     QString s = url.toString();
-    if(s.contains("nnoauth?") && s.contains("?oauth_token=")) {
-        if(s.contains("&oauth_verifier=")) { // success
-            QString token = s.mid(s.indexOf("?oauth_token=") + QString("?oauth_token=").length());
+    QString oauthMarker = QStringLiteral("?oauth_token=");
+    if(s.contains(QStringLiteral("nnoauth?")) && s.contains(oauthMarker)) {
+        if(s.contains(QStringLiteral("&oauth_verifier="))) { // success
+            QString token = s.mid(s.indexOf(oauthMarker) + oauthMarker.length());
 
             // step 4: acquire permanent token
             ReplyFetcher* replyFetcher = new ReplyFetcher();
-            connect(replyFetcher, SIGNAL(replyFetched(QObject*)), this, SLOT(permanentFinished(QObject*)));
-            QUrl url(oauthUrlBase_ + QString("&oauth_token=%1").arg(token));
+            connect(replyFetcher, &ReplyFetcher::replyFetched, this, &EvernoteOAuthWebView::permanentFinished);
+            QUrl url(oauthUrlBase_ + QStringLiteral("&oauth_token=%1").arg(token));
             replyFetcher->start(page()->networkAccessManager(), url);
         } else {
-            setError("Authentification failed.");
+            setError(QStringLiteral("Authentification failed."));
         }
         disconnect(this, SIGNAL(urlChanged(QUrl)), this, SLOT(onUrlChanged(QUrl)));
         QMetaObject::invokeMethod(this, "clearHtml", Qt::QueuedConnection);
@@ -126,12 +127,12 @@ void qevercloud::EvernoteOAuthWebView::permanentFinished(QObject *rf)
             int pos = decoded.indexOf('=');
             params[decoded.left(pos).trimmed()] = decoded.mid(pos + 1);
         }
-        oauthResult_.noteStoreUrl = params["edam_noteStoreUrl"];
-        oauthResult_.expires = Timestamp(params["edam_expires"].toLongLong());
-        oauthResult_.shardId = params["edam_shard"];
-        oauthResult_.userId = params["edam_userId"].toInt();
-        oauthResult_.webApiUrlPrefix = params["edam_webApiUrlPrefix"];
-        oauthResult_.authenticationToken = params["oauth_token"];
+        oauthResult_.noteStoreUrl = params[QStringLiteral("edam_noteStoreUrl")];
+        oauthResult_.expires = Timestamp(params[QStringLiteral("edam_expires")].toLongLong());
+        oauthResult_.shardId = params[QStringLiteral("edam_shard")];
+        oauthResult_.userId = params[QStringLiteral("edam_userId")].toInt();
+        oauthResult_.webApiUrlPrefix = params[QStringLiteral("edam_webApiUrlPrefix")];
+        oauthResult_.authenticationToken = params[QStringLiteral("oauth_token")];
 
         emit authenticationFinished(true);
         emit authenticationSuceeded();

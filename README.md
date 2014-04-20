@@ -17,14 +17,13 @@ your copy of Qt Creator to have context-sensitive help. See *qch* subdir.
 
 ## Compatibility
 
-Though I'm a big fan of C++11 QEverCloud does not use any new cool stuff.
-So C++03 should be enough to build the library. 
+While the library initially supported Qt 4 it became too constraining so I've dropped the support.
+If you're stuck with Qt 4 you can use the previous version which is available through `qt4` branch.
 
-I have not used any Qt 5 specific features so the library should compile for Qt 4.
-I do not check this personally but I have heard about successful compilation under Qt 4.8 / Linux.
+I do not use C++11 features directly but only through macros Qt 5 have like Q_DECL_OVERRIDE, Q_STATIC_ASSERT_X
+QStringLiteral and others. So QEverCloud supports any given compiler as good as Qt 5 supports it.
 
-To be pricise I've tested the library under Qt 5 on Windows with MSVC2010, MSVC2012 and MinGW 4.8.
-
+Personally I test the library with MSVC2012 and MinGW 4.8 on Windows.
 
 ## How to compile
 

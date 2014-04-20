@@ -10,82 +10,10 @@
 #include <QStringList>
 #include <QByteArray>
 #include "../globals.h"
+#include "EDAMErrorCode.h"
+#include <QSharedPointer>
 
 namespace qevercloud {
-
-/**
- * Numeric codes indicating the type of error that occurred on the
- * service.
- * <dl>
- *   <dt>UNKNOWN</dt>
- *     <dd>No information available about the error</dd>
- *   <dt>BAD_DATA_FORMAT</dt>
- *     <dd>The format of the request data was incorrect</dd>
- *   <dt>PERMISSION_DENIED</dt>
- *     <dd>Not permitted to perform action</dd>
- *   <dt>INTERNAL_ERROR</dt>
- *     <dd>Unexpected problem with the service</dd>
- *   <dt>DATA_REQUIRED</dt>
- *     <dd>A required parameter/field was absent</dd>
- *   <dt>LIMIT_REACHED</dt>
- *     <dd>Operation denied due to data model limit</dd>
- *   <dt>QUOTA_REACHED</dt>
- *     <dd>Operation denied due to user storage limit</dd>
- *   <dt>INVALID_AUTH</dt>
- *     <dd>Username and/or password incorrect</dd>
- *   <dt>AUTH_EXPIRED</dt>
- *     <dd>Authentication token expired</dd>
- *   <dt>DATA_CONFLICT</dt>
- *     <dd>Change denied due to data model conflict</dd>
- *   <dt>ENML_VALIDATION</dt>
- *     <dd>Content of submitted note was malformed</dd>
- *   <dt>SHARD_UNAVAILABLE</dt>
- *     <dd>Service shard with account data is temporarily down</dd>
- *   <dt>LEN_TOO_SHORT</dt>
- *     <dd>Operation denied due to data model limit, where something such
- *         as a string length was too short</dd>
- *   <dt>LEN_TOO_LONG</dt>
- *     <dd>Operation denied due to data model limit, where something such
- *         as a string length was too long</dd>
- *   <dt>TOO_FEW</dt>
- *     <dd>Operation denied due to data model limit, where there were
- *         too few of something.</dd>
- *   <dt>TOO_MANY</dt>
- *     <dd>Operation denied due to data model limit, where there were
- *         too many of something.</dd>
- *   <dt>UNSUPPORTED_OPERATION</dt>
- *     <dd>Operation denied because it is currently unsupported.</dd>
- *   <dt>TAKEN_DOWN</dt>
- *     <dd>Operation denied because access to the corresponding object is
- *         prohibited in response to a take-down notice.</dd>
- *   <dt>RATE_LIMIT_REACHED</dt>
- *     <dd>Operation denied because the calling application has reached
- *         its hourly API call limit for this user.</dd>
- * </dl>
- */
-struct EDAMErrorCode {
-    enum type {
-        UNKNOWN = 1,
-        BAD_DATA_FORMAT = 2,
-        PERMISSION_DENIED = 3,
-        INTERNAL_ERROR = 4,
-        DATA_REQUIRED = 5,
-        LIMIT_REACHED = 6,
-        QUOTA_REACHED = 7,
-        INVALID_AUTH = 8,
-        AUTH_EXPIRED = 9,
-        DATA_CONFLICT = 10,
-        ENML_VALIDATION = 11,
-        SHARD_UNAVAILABLE = 12,
-        LEN_TOO_SHORT = 13,
-        LEN_TOO_LONG = 14,
-        TOO_FEW = 15,
-        TOO_MANY = 16,
-        UNSUPPORTED_OPERATION = 17,
-        TAKEN_DOWN = 18,
-        RATE_LIMIT_REACHED = 19
-    };
-};
 
 /**
  * This enumeration defines the possible permission levels for a user.
@@ -2918,7 +2846,8 @@ public:
 
     EDAMUserException() {}
     ~EDAMUserException() throw() {}
-    const char* what() const throw();
+    const char* what() const throw() Q_DECL_OVERRIDE;
+    virtual QSharedPointer<EverCloudExceptionData> exceptionData() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -2943,7 +2872,8 @@ public:
 
     EDAMSystemException() {}
     ~EDAMSystemException() throw() {}
-    const char* what() const throw();
+    const char* what() const throw() Q_DECL_OVERRIDE;
+    virtual QSharedPointer<EverCloudExceptionData> exceptionData() const Q_DECL_OVERRIDE;
 };
 
 /**
@@ -2966,9 +2896,54 @@ public:
 
     EDAMNotFoundException() {}
     ~EDAMNotFoundException() throw() {}
-    const char* what() const throw();
+    const char* what() const throw() Q_DECL_OVERRIDE;
+    virtual QSharedPointer<EverCloudExceptionData> exceptionData() const Q_DECL_OVERRIDE;
 };
 
 
 }
+
+Q_DECLARE_METATYPE(qevercloud::SyncState)
+Q_DECLARE_METATYPE(qevercloud::SyncChunkFilter)
+Q_DECLARE_METATYPE(qevercloud::NoteFilter)
+Q_DECLARE_METATYPE(qevercloud::NotesMetadataResultSpec)
+Q_DECLARE_METATYPE(qevercloud::NoteCollectionCounts)
+Q_DECLARE_METATYPE(qevercloud::NoteVersionId)
+Q_DECLARE_METATYPE(qevercloud::ClientUsageMetrics)
+Q_DECLARE_METATYPE(qevercloud::RelatedQuery)
+Q_DECLARE_METATYPE(qevercloud::RelatedResultSpec)
+Q_DECLARE_METATYPE(qevercloud::Data)
+Q_DECLARE_METATYPE(qevercloud::UserAttributes)
+Q_DECLARE_METATYPE(qevercloud::Accounting)
+Q_DECLARE_METATYPE(qevercloud::BusinessUserInfo)
+Q_DECLARE_METATYPE(qevercloud::PremiumInfo)
+Q_DECLARE_METATYPE(qevercloud::User)
+Q_DECLARE_METATYPE(qevercloud::Tag)
+Q_DECLARE_METATYPE(qevercloud::LazyMap)
+Q_DECLARE_METATYPE(qevercloud::ResourceAttributes)
+Q_DECLARE_METATYPE(qevercloud::Resource)
+Q_DECLARE_METATYPE(qevercloud::NoteAttributes)
+Q_DECLARE_METATYPE(qevercloud::Note)
+Q_DECLARE_METATYPE(qevercloud::Publishing)
+Q_DECLARE_METATYPE(qevercloud::BusinessNotebook)
+Q_DECLARE_METATYPE(qevercloud::SavedSearchScope)
+Q_DECLARE_METATYPE(qevercloud::SavedSearch)
+Q_DECLARE_METATYPE(qevercloud::SharedNotebookRecipientSettings)
+Q_DECLARE_METATYPE(qevercloud::SharedNotebook)
+Q_DECLARE_METATYPE(qevercloud::NotebookRestrictions)
+Q_DECLARE_METATYPE(qevercloud::Notebook)
+Q_DECLARE_METATYPE(qevercloud::LinkedNotebook)
+Q_DECLARE_METATYPE(qevercloud::NotebookDescriptor)
+Q_DECLARE_METATYPE(qevercloud::PublicUserInfo)
+Q_DECLARE_METATYPE(qevercloud::AuthenticationResult)
+Q_DECLARE_METATYPE(qevercloud::BootstrapSettings)
+Q_DECLARE_METATYPE(qevercloud::BootstrapProfile)
+Q_DECLARE_METATYPE(qevercloud::BootstrapInfo)
+Q_DECLARE_METATYPE(qevercloud::SyncChunk)
+Q_DECLARE_METATYPE(qevercloud::NoteList)
+Q_DECLARE_METATYPE(qevercloud::NoteMetadata)
+Q_DECLARE_METATYPE(qevercloud::NotesMetadataList)
+Q_DECLARE_METATYPE(qevercloud::NoteEmailParameters)
+Q_DECLARE_METATYPE(qevercloud::RelatedResult)
+
 #endif // QEVERCLOUD_GENERATED_TYPES_H

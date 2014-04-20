@@ -163,7 +163,7 @@ public:
      * @param consumerSecret
      * along with this
     */
-    EvernoteOAuthDialog(QString consumerKey, QString consumerSecret, QString host = "www.evernote.com", QWidget* parent = 0);
+    EvernoteOAuthDialog(QString consumerKey, QString consumerSecret, QString host = QStringLiteral("www.evernote.com"), QWidget* parent = 0);
     ~EvernoteOAuthDialog();
 
     /**
@@ -193,11 +193,11 @@ public:
      * @return
      *   QDialog::Accepted on a succesful authentication.
      */
-    int exec();
+    int exec() Q_DECL_OVERRIDE;
 
     /** Shows the dialog as a window modal dialog, returning immediately.
      */
-    void open();
+    void open() Q_DECL_OVERRIDE;
 
 private:
    EvernoteOAuthWebView* webView_;

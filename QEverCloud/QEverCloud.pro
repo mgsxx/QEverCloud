@@ -23,17 +23,20 @@ HEADERS += \
     exceptions.h \
     globals.h \
     impl.h \
-    thumbnail.h
+    thumbnail.h \
+    AsyncResult.h \
+    Optional.h \
+    EverCloudException.h
 
 SOURCES += \
     exceptions.cpp \
     oauth.cpp \
     http.cpp \
-    services_nongenerated.cpp
-
+    services_nongenerated.cpp \
+    AsyncResult.cpp
 
 SOURCES += generated/constants.cpp generated/services.cpp generated/types.cpp
-HEADERS += generated/constants.h generated/services.h generated/types.h generated/types_impl.h 
+HEADERS += generated/constants.h generated/services.h generated/types.h generated/types_impl.h generated/EDAMErrorCode.h
 
 
 
