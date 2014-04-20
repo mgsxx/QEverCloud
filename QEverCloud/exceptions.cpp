@@ -1,4 +1,3 @@
-
 #include "generated/types.h"
 #include "generated/types_impl.h"
 #include "impl.h"
@@ -234,7 +233,7 @@ void readEDAMNotFoundException(ThriftBinaryBufferReader& r, EDAMNotFoundExceptio
     r.readStructEnd();
 }
 
-const char *ThriftException::what() const
+const char *ThriftException::what() const throw()
 {
     if (err_.empty()) {
       switch (type_) {
