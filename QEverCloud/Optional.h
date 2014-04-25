@@ -248,6 +248,22 @@ public:
         return isSet_ ? value_ : defaultValue;
     }
 
+    /**
+     * operator ==. Returns true if both left and right values are set and equal to each other
+     * or if both left and right values are unset.
+     */
+    bool operator==(const Optional<T> & other) const {
+        if(isSet_ != other.isSet_) return false;
+        return !isSet_ || (value_ == other.value_);
+    }
+
+    /**
+     * operator !=. Returns the inverse of operator ==
+     */
+    bool operator!=(const Optional<T> & other) const {
+        return !operator==(other);
+    }
+
     template<typename X> friend class Optional;
 };
 
