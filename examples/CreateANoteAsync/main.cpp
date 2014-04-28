@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
                } else {
                    cout << QStringLiteral("Error 2: ") << error->errorMessage << endl;
 
-                   // Example of handling error by it's type
+                   // Example of handling an error by it's type
                    QSharedPointer<EDAMNotFoundExceptionData> errorNotFound = error.objectCast<EDAMNotFoundExceptionData>();
                    if(!errorNotFound.isNull()) {
                        cout << QStringLiteral("The notebook is not found!!!") << endl;
