@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
     note.content = QString("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
              "<!DOCTYPE en-note SYSTEM \"http://xml.evernote.com/pub/enml2.dtd\">\n"
              "<en-note>"
-             "<b>It's goog to be king!</b><br /><br /><p>Well, it seems that <a href=\"https://github.com/mgsxx/QEverCloud\">QEverCloud</a> is indeed working...</p>"
+             "<b>It's good to be king!</b><br /><br /><p>Well, it seems that <a href=\"https://github.com/mgsxx/QEverCloud\">QEverCloud</a> is indeed working...</p>"
              "</en-note>");
 
     QSharedPointer<EverCloudExceptionData> error;
