@@ -264,7 +264,6 @@ public:
 
     template<typename X> friend class Optional;
 
-    /** swap specialization */
     friend void swap(Optional& first, Optional& second) {
         using std::swap;
         swap(first.isSet_, second.isSet_);
