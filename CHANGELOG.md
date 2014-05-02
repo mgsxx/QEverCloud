@@ -12,7 +12,7 @@
   * Various non-critical fixes and improvements.
 
 ## 1.2
-  * Fixed reported issues when compiling under Qt 4, should be now problems now
+  * Fixed reported issues when compiling under Qt 4, should be no problems now
   * This is the last version then will try to be compatible with Qt 4
   * Some optimizations
 
