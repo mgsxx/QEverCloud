@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1
+  * == and != operators for Evernote structs now are available
+  * Asynchronous thumbnail download is added
+  * Special exception types for AUTH_EXPIRED and RATE_LIMIT_REACHED errors
+
 ## 2.0
   * Qt 4 is no longer supported.
   * Asynchronous API is introdused.
