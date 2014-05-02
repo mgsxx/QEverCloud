@@ -4,6 +4,7 @@
   * == and != operators for Evernote structs now are available
   * Asynchronous thumbnail download is added
   * Special exception types for AUTH_EXPIRED and RATE_LIMIT_REACHED errors
+  * Move semantics for Optional is implemented. As a result moving is working for Evernote struct in a conforming compiler (and it's NOT VS2012).
 
 ## 2.0
   * Qt 4 is no longer supported.
