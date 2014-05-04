@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
     </ul>
@@ -53,7 +54,7 @@
 <a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="classqevercloud_1_1_ever_cloud_exception_data-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">qevercloud::EverCloudExceptionData Class Reference</div>  </div>
+<div class="title">qevercloud::EverCloudExceptionData Class Reference<div class="ingroups"><a class="el" href="group__exceptions.html">Exception classes</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -88,10 +89,16 @@ Public Attributes</h2></td></tr>
 <div class="line">...</div>
 <div class="line">QObject::connect(ns-&gt;getNotebook(notebookGuid), &amp;<a class="code" href="classqevercloud_1_1_async_result.html#a768d953e130f0546bd4a2e83ddbfa61d">AsyncResult::finished</a>, [](QVariant result, QSharedPointer&lt;EverCloudExceptionData&gt; error) {</div>
 <div class="line">    <span class="keywordflow">if</span>(!error.isNull()) {</div>
+<div class="line">        QSharedPointer&lt;EDAMSystemExceptionRateLimitReachedData&gt; errorRateLimitReached = error.objectCast&lt;EDAMSystemExceptionRateLimitReachedData&gt;();</div>
+<div class="line">        QSharedPointer&lt;EDAMSystemExceptionAuthExpiredData&gt; errorAuthExpired = error.objectCast&lt;EDAMSystemExceptionAuthExpiredData&gt;();</div>
 <div class="line">        QSharedPointer&lt;EDAMNotFoundExceptionData&gt; errorNotFound = error.objectCast&lt;EDAMNotFoundExceptionData&gt;();</div>
 <div class="line">        QSharedPointer&lt;EDAMUserExceptionData&gt; errorUser = error.objectCast&lt;EDAMUserExceptionData&gt;();</div>
 <div class="line">        QSharedPointer&lt;EDAMSystemExceptionData&gt; errorSystem = error.objectCast&lt;EDAMSystemExceptionData&gt;();</div>
-<div class="line">        <span class="keywordflow">if</span>(!errorNotFound.isNull()) {</div>
+<div class="line">        <span class="keywordflow">if</span>(!errorAuthExpired.isNull()) {</div>
+<div class="line">            qDebug() &lt;&lt; <span class="stringliteral">&quot;authentication token is expired!&quot;</span> &lt;&lt; endl;</div>
+<div class="line">        <span class="keywordflow">if</span>(!errorRateLimitReached.isNull()) {</div>
+<div class="line">            qDebug() &lt;&lt; <span class="stringliteral">&quot;Evernote API rate limit is reached! Wait at least for &quot;</span> &lt;&lt; errorRateLimitReached.rateLimitDuration &lt;&lt; <span class="stringliteral">&quot; seconds.&quot;</span> &lt;&lt;endl;</div>
+<div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!errorNotFound.isNull()) {</div>
 <div class="line">            qDebug() &lt;&lt; <span class="stringliteral">&quot;notebook not found&quot;</span> &lt;&lt; errorNotFound.identifier &lt;&lt; errorNotFound.key;</div>
 <div class="line">        } <span class="keywordflow">else</span> <span class="keywordflow">if</span>(!errorUser.isNull()) {</div>
 <div class="line">            qDebug() &lt;&lt; errorUser.errorMessage;</div>
@@ -112,7 +119,8 @@ Public Attributes</h2></td></tr>
 <div class="line">      <span class="comment">// success</span></div>
 <div class="line">    }</div>
 <div class="line">});</div>
-</div><!-- fragment --> </div><h2 class="groupheader">Member Function Documentation</h2>
+</div><!-- fragment --><p> Note the handling of the <code><a class="el" href="classqevercloud_1_1_e_d_a_m_system_exception_rate_limit_reached.html" title="EDAMSystemException for errorCode = RATE_LIMIT_REACHED ">EDAMSystemExceptionRateLimitReached</a></code> and <code><a class="el" href="classqevercloud_1_1_e_d_a_m_system_exception_auth_expired.html" title="EDAMSystemException for errorCode = AUTH_EXPIRED ">EDAMSystemExceptionAuthExpired</a></code> cases. They should be handled for any Evernote API function call in a special way. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="adf1af981944f74bf90314a14635f9566"></a>
 <div class="memitem">
 <div class="memproto">
@@ -160,7 +168,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 2 2014 19:10:22 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 4 2014 13:28:58 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

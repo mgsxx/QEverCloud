@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.5"/>
-<title>QEverCloud: About QEverCloud</title>
+<title>QEverCloud: QEverCloud</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
     </ul>
@@ -38,16 +39,51 @@
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">About QEverCloud </div>  </div>
+<div class="title">QEverCloud </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This library presents complete Evernote SDK for Qt.All the functionality that is described on <a href="http://dev.evernote.com/doc/">Evernote site</a> is implemented and ready to use. In particular OAuth autentication is implemented.</p>
+<div class="textblock"><h3>Unofficial Evernote Cloud API for Qt</h3>
+<p>Hosted on <a href="https://github.com/mgsxx/QEverCloud">GitHub</a></p>
+<p>This library presents complete Evernote SDK for Qt. All the functionality that is described on <a href="http://dev.evernote.com/doc/">Evernote developers site</a> is implemented and ready to use. In particular OAuth autentication is implemented.</p>
+<p>Most of the library is an implementation of the <a href="http://dev.evernote.com/doc/reference/">Thrift Evernote API</a>.</p>
+<ul>
+<li><a class="el" href="group__edamstruct.html">Evernote API structures</a></li>
+<li><a class="el" href="group__edamconst.html">Evernote API constants</a></li>
+<li><a class="el" href="group__edamtypes.html">Evernote API enums and typedefs</a></li>
+<li><a class="el" href="group__edamservices.html">Evernote API services</a></li>
+<li><a class="el" href="group__exceptions.html">Exception classes</a></li>
+</ul>
+<p>There are only little differences with <a href="https://github.com/evernote/evernote-sdk-cpp">the official Thrift generated C++ library</a> that were introduced with intent to make it more convenient to use:</p>
+<ul>
+<li>Optional values in Evernote API structures are explicitly reperesented as such with <a class="el" href="classqevercloud_1_1_optional.html">Optional </a> template as opposed to having two different structures, one for values and one for value existence flags.</li>
+<li><code>authenticationToken</code> parameter is used mostly with the same value in all service functions calls so I've added a facility to specify this value as a defualt. As a result <code>authenticationToken</code> parameter is moved from the first to the last position in functions prototypes.</li>
+<li><a class="el" href="page_async.html">Qt-style asynchrous variants</a> of service functions.</li>
+</ul>
+<p>The mentioned official C++ SDK does not provide all the programmer needs when using Evernote and there is some Evernote functionality that is not available via Thrift interface.</p>
+<ul>
+<li><a class="el" href="group__oauth.html">OAuth authorization</a></li>
+<li><a class="el" href="classqevercloud_1_1_thumbnail.html">Thumbnail </a> downloading</li>
+</ul>
+<h4>Using QEverCloud</h4>
+<p>As QEverCloud depends on Qt 5 it is very easy to compile and use. To use to the compiled library in your project do the following:</p>
+<ul>
+<li>Link compiled library to your project in the usual way, something like this: <div class="fragment"><div class="line">libpath = ... # path to the library</div>
+<div class="line">libpath = $$clean_path($$libpath)</div>
+<div class="line">LIBS += $${libpath}</div>
+<div class="line">PRE_TARGETDEPS += $${libpath}</div>
+</div><!-- fragment --></li>
+<li>Add QEverCloud's <code>include</code> subdir to your app INCLUDEPATH qmake variable: <div class="fragment"><div class="line">path = $$absolute_path($$PWD/../../some/path/QEverCloud/include)</div>
+<div class="line">path = $$clean_path($$path)</div>
+<div class="line">INCLUDEPATH += $$path</div>
+</div><!-- fragment --></li>
+<li>Add to QT variabe the <code>network</code> module. If you use OAuth functionality than add also <code>widgets</code> and <code>webkitwidgets</code> modules.</li>
+</ul>
 <p>Include <em>QEverCloud.h</em> or <em>QEverCloudOAuth.h</em> to use the library. The latter header is needed if you use OAuth functionality.</p>
-<p><a href="https://github.com/mgsxx/QEverCloud">QEverCloud on GitHub</a> </p>
+<p>Qt uses OpenSSL to implement https protocol. As a result OpenSSL dynamically linked libraries (libeay32 and ssleay32) must be availabe in the PATH for your app to run successfully. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 2 2014 19:10:22 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 4 2014 13:28:59 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>

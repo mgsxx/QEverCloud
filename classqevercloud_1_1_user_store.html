@@ -31,6 +31,7 @@
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
       <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="modules.html"><span>Modules</span></a></li>
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
     </ul>
@@ -52,7 +53,7 @@
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classqevercloud_1_1_user_store-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">qevercloud::UserStore Class Reference</div>  </div>
+<div class="title">qevercloud::UserStore Class Reference<div class="ingroups"><a class="el" href="group__edamservices.html">Evernote API services</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
@@ -89,11 +90,11 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ae2a2514ed1097ce470ad39771e508bb0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af6ced3f3cf542e497760d9e9a66fcc82"><td class="memItemLeft" align="right" valign="top">QString&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqevercloud_1_1_user_store.html#af6ced3f3cf542e497760d9e9a66fcc82">authenticationToken</a> ()</td></tr>
 <tr class="separator:af6ced3f3cf542e497760d9e9a66fcc82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a50d643ffd794ec0334323c82e8056ada"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqevercloud_1_1_user_store.html#a50d643ffd794ec0334323c82e8056ada">checkVersion</a> (QString clientName, qint16 edamVersionMajor=<a class="el" href="namespaceqevercloud.html#a9fb9bc977137bc34d2d1680d57df74b4">EDAM_VERSION_MAJOR</a>, qint16 edamVersionMinor=<a class="el" href="namespaceqevercloud.html#ab06ee22f5fd7c12399436a1bf9c3759b">EDAM_VERSION_MINOR</a>)</td></tr>
+<tr class="memitem:a50d643ffd794ec0334323c82e8056ada"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqevercloud_1_1_user_store.html#a50d643ffd794ec0334323c82e8056ada">checkVersion</a> (QString clientName, qint16 edamVersionMajor=<a class="el" href="group__edamconst.html#ga9fb9bc977137bc34d2d1680d57df74b4">EDAM_VERSION_MAJOR</a>, qint16 edamVersionMinor=<a class="el" href="group__edamconst.html#gab06ee22f5fd7c12399436a1bf9c3759b">EDAM_VERSION_MINOR</a>)</td></tr>
 <tr class="memdesc:a50d643ffd794ec0334323c82e8056ada"><td class="mdescLeft">&#160;</td><td class="mdescRight">This should be the first call made by a client to the EDAM service.  <a href="#a50d643ffd794ec0334323c82e8056ada">More...</a><br/></td></tr>
 <tr class="separator:a50d643ffd794ec0334323c82e8056ada"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8efd341f1afb1bfb26e6b52324170c85"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8efd341f1afb1bfb26e6b52324170c85"></a>
-<a class="el" href="classqevercloud_1_1_async_result.html">AsyncResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqevercloud_1_1_user_store.html#a8efd341f1afb1bfb26e6b52324170c85">checkVersionAsync</a> (QString clientName, qint16 edamVersionMajor=<a class="el" href="namespaceqevercloud.html#a9fb9bc977137bc34d2d1680d57df74b4">EDAM_VERSION_MAJOR</a>, qint16 edamVersionMinor=<a class="el" href="namespaceqevercloud.html#ab06ee22f5fd7c12399436a1bf9c3759b">EDAM_VERSION_MINOR</a>)</td></tr>
+<a class="el" href="classqevercloud_1_1_async_result.html">AsyncResult</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqevercloud_1_1_user_store.html#a8efd341f1afb1bfb26e6b52324170c85">checkVersionAsync</a> (QString clientName, qint16 edamVersionMajor=<a class="el" href="group__edamconst.html#ga9fb9bc977137bc34d2d1680d57df74b4">EDAM_VERSION_MAJOR</a>, qint16 edamVersionMinor=<a class="el" href="group__edamconst.html#gab06ee22f5fd7c12399436a1bf9c3759b">EDAM_VERSION_MINOR</a>)</td></tr>
 <tr class="memdesc:a8efd341f1afb1bfb26e6b52324170c85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Asynchronous version of <a class="el" href="classqevercloud_1_1_user_store.html#a50d643ffd794ec0334323c82e8056ada">checkVersion</a>. <br/></td></tr>
 <tr class="separator:a8efd341f1afb1bfb26e6b52324170c85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a78b57afd7575fd4fc71b9cc1c2fa0a01"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structqevercloud_1_1_authentication_result.html">AuthenticationResult</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classqevercloud_1_1_user_store.html#a78b57afd7575fd4fc71b9cc1c2fa0a01">completeTwoFactorAuthentication</a> (QString oneTimeCode, QString deviceIdentifier, QString deviceDescription, QString <a class="el" href="classqevercloud_1_1_user_store.html#af6ced3f3cf542e497760d9e9a66fcc82">authenticationToken</a>=QString())</td></tr>
@@ -495,13 +496,13 @@ PERMISSION_DENIED "Business.status" - the business that the user is a member of 
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">qint16&#160;</td>
-          <td class="paramname"><em>edamVersionMajor</em> = <code><a class="el" href="namespaceqevercloud.html#a9fb9bc977137bc34d2d1680d57df74b4">EDAM_VERSION_MAJOR</a></code>, </td>
+          <td class="paramname"><em>edamVersionMajor</em> = <code><a class="el" href="group__edamconst.html#ga9fb9bc977137bc34d2d1680d57df74b4">EDAM_VERSION_MAJOR</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">qint16&#160;</td>
-          <td class="paramname"><em>edamVersionMinor</em> = <code><a class="el" href="namespaceqevercloud.html#ab06ee22f5fd7c12399436a1bf9c3759b">EDAM_VERSION_MINOR</a></code>&#160;</td>
+          <td class="paramname"><em>edamVersionMinor</em> = <code><a class="el" href="group__edamconst.html#gab06ee22f5fd7c12399436a1bf9c3759b">EDAM_VERSION_MINOR</a></code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -764,7 +765,7 @@ AUTH_EXPIRED "authenticationToken" - the authentication token is expired or is a
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 2 2014 19:10:22 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun May 4 2014 13:28:59 for QEverCloud by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.5
 </small></address>
