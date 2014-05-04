@@ -33,7 +33,7 @@ QEverCloud depends on Qt only. So there is nothing special to compiling it.
 ## How to link
 
 * Link compiled library to your project in the usual way. 
-* Add it's *include* subdir to your app INCLUDE qmake variable.
+* Add it's *include* subdir to your app INCLUDEPATH qmake variable.
 * Add to QT variabe the *network* module. If you use OAuth functionality than add also *widgets* and *webkitwidgets* modules.
 
 Include *QEverCloud.h* or *QEverCloudOAuth.h* to use the library. The latter header is needed if you use OAuth functionality.
