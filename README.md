@@ -14,6 +14,14 @@ Read doxygen generated [documentation](http://mgsxx.github.io/QEverCloud) for de
 The documentstion is also available as a .qch file which you can register with
 your copy of Qt Creator to have context-sensitive help. See *qch* subdir.
 
+## Forks
+Due to a radical change in my interests in programming and also due to the fact that I personaly mostly migrated out of Evernote **I do not maintain QEverCloud anymore**.
+
+As of time of writing there are people who use QEverCloud in their projects. Some of them have created forks and maintain them. You should use their forks and not my repository and contact them about pull request and bug reports. The list of the forks:
+
+- [Dmitry Ivanov's](https://github.com/d1vanov/QEverCloud) fork
+
+If you want your fork to appear in the list (or disappear from it) - contact me. That much I can do :)
 
 ## Compatibility
 
